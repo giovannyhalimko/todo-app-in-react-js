@@ -38,7 +38,7 @@ jobs:
       # Run container for testing
       - name: Run container in background
         run: |
-          docker run -d -p 3000:3000 --name todo-app todo-app:latest
+          docker run -d -p 3000:9080 --name todo-app todo-app:latest
           sleep 10 # wait a few seconds for the app to start
 
       # Health check using curl
