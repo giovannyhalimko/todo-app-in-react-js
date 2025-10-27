@@ -58,7 +58,7 @@ let App = () => {
 
                 {
                     ToDoArray.length === 0 ? <div className="alert alert-success mt-2" role="alert">
-                        No To Do Available Yet !!
+                        Belum ada Todo yang tersedia !!
                     </div> : 
                     
                     <Todo GetTodos={ToDoArray} Del={Delete} Edit={EditText}/>

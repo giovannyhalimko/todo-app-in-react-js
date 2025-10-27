@@ -19,7 +19,7 @@ let Form=(Props)=>
     
     return(
         <div className="Form">
-            <input type="text" placeholder='Enter any To Do ...' value={Text} onChange={(Event)=>{HandleInput(Event.target.value)}}/>
+            <input type="text" placeholder='Masukan Todo ...' value={Text} onChange={(Event)=>{HandleInput(Event.target.value)}}/>
             <div className='Plus' onClick={()=>{HandleClick()}}>
                 <i className={Props.Icon} ></i>
             </div>
