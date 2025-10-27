@@ -30,6 +30,29 @@ jobs:
       - name: Build project
         run: npm run build
 
+      # Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t todo-app:latest .
+
+      # Run container for testing
+      - name: Run container in background
+        run: |
+          docker run -d -p 3000:3000 --name todo-app todo-app:latest
+          sleep 10 # wait a few seconds for the app to start
+
+      # Health check using curl
+      - name: Verify app is running
+        run: |
+          curl --fail http://localhost:3000 || (echo "App not responding" && exit 1)
+
+      # Stop and remove container (cleanup)
+      - name: Clean up container
+        if: always()
+        run: |
+          docker stop todo-app
+          docker rm todo-app
+
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
